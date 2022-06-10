@@ -2,10 +2,12 @@
 #    Importación de los datos
 ####
 library(RCurl)
-x <- getURL("https://raw.githubusercontent.com/EduardoSelimMM/ProyectosRegresion/main/datasets/facebook_cosmetic_data.csv")
-fb <- read.csv(text = x)
 library("scatterplot3d")
 library(MASS)
+
+x <- getURL("https://raw.githubusercontent.com/EduardoSelimMM/ProyectosRegresion/main/datasets/facebook_cosmetic_data.csv")
+fb <- read.csv(text = x)
+
 ##########
 #  Cambio para que estas variables sean factores
 ####
