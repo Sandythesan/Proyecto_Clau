@@ -2,8 +2,6 @@
 #    Importación de los datos
 ####
 
-"blsblsbls#"
-
 library(RCurl)
 library("scatterplot3d")
 library(MASS)
@@ -26,10 +24,10 @@ fb$Post.Hour<-as.factor(fb$Post.Hour)
 #           Yo lo que hice fue eliminarlos, eran pocos y por facilidad
 #                    más que nada para que lo demás corriera bien
 ####
+#  Se cambió el NA de la variable PAID, por un 0. Los otros NA se dejaron ya que no estaban en variables de interés
 as.data.frame(sapply(fb,function(x) sum(is.na(x))))
-fb2<-na.omit(fb)
+fb$Paid[is.na(fb$Paid)]<-0
 as.data.frame(sapply(fb2,function(x) sum(is.na(x))))
-fb<-fb2
 
 ##########
 #  Se dan los nombres y los summary de los datos
