@@ -34,14 +34,15 @@ fb$Paid[is.na(fb$Paid)]<-0
 as.data.frame(sapply(fb2,function(x) sum(is.na(x))))
 
 ###########
-fb$Cuatrimestre<-fb$Post.Month
-levels(fb$Cuatrimestre)<-c(rep(1,4),rep(2,4),
-                           rep(3,4),rep(4,4))
-fb$Cuatrimestre
-##########
+library("forcats")
 fb$Post.Weekday.col = fct_collapse(fb$Post.Weekday,inicio_sem = c("2","3","4","5"),fin_sem = c("1","6","7"))
-table(data$Post.Weekday.col)
-fb$Post.Weekday.col             
+table(fb$Post.Weekday.col)
+
+fb$Post.Month.col = fct_collapse(fb$Post.Month,cuatri_1 = c("1","2","3","4"),cuatri_2 = c("5","6","7","8"),cuatri_3 = c("9","10","11","12"))
+table(fb$Post.Month.col)
+
+fb$Post.Hour.col = fct_collapse(fb$Post.Hour,maniana = c("5","6","7","8","9","10","11"),tarde = c("12","13","14","15","16","17","18","19"),noche = c("20","22","23","1","2","3","4"))
+table(fb$Post.Hour.col)          
                      
 ##########
 #  Se dan los nombres y los summary de los datos
@@ -163,3 +164,13 @@ step.model_pred_log<-stepAIC(fb_pred_log, direction = "both",
                              trace = TRUE)
 summary(step.model_pred_log) 
 plot(step.model_pred_log)
+                     
+#############
+#    5) Se realizó de nuevo el modelo predictivo, pero utilizando el log del alcance y con las nuevas variables agrupadas
+####                     
+fb_pred_log2<-lm(log(fb$Lifetime.Post.Total.Reach)~fb$Post.Hour.col+fb$Post.Weekday.col+fb$Post.Month.col+fb$Type+fb$Category+fb$Paid+fb$Page.total.likes)
+step.model_pred_log2<-stepAIC(fb_pred_log2, direction = "both",
+                             trace = TRUE)
+summary(step.model_pred_log2)
+plot(step.model_pred_log2)
+                 
