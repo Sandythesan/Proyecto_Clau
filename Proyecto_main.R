@@ -1,10 +1,14 @@
-############
-#    Importación de los datos
+#############
+# Paquetería
 ####
-
 library(RCurl)
 library("scatterplot3d")
 library(MASS)
+library("forcats")
+
+############
+#    Importación de los datos
+####
 
 x <- getURL("https://raw.githubusercontent.com/EduardoSelimMM/ProyectosRegresion/main/datasets/facebook_cosmetic_data.csv")
 fb <- read.csv(text = x)
@@ -35,7 +39,9 @@ levels(fb$Cuatrimestre)<-c(rep(1,4),rep(2,4),
                            rep(3,4),rep(4,4))
 fb$Cuatrimestre
 ##########
-                     
+fb$Post.Weekday.col = fct_collapse(fb$Post.Weekday,inicio_sem = c("2","3","4","5"),fin_sem = c("1","6","7"))
+table(data$Post.Weekday.col)
+fb$Post.Weekday.col             
                      
 ##########
 #  Se dan los nombres y los summary de los datos
