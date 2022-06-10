@@ -29,6 +29,14 @@ as.data.frame(sapply(fb,function(x) sum(is.na(x))))
 fb$Paid[is.na(fb$Paid)]<-0
 as.data.frame(sapply(fb2,function(x) sum(is.na(x))))
 
+###########
+fb$Cuatrimestre<-fb$Post.Month
+levels(fb$Cuatrimestre)<-c(rep(1,4),rep(2,4),
+                           rep(3,4),rep(4,4))
+fb$Cuatrimestre
+##########
+                     
+                     
 ##########
 #  Se dan los nombres y los summary de los datos
 ####
