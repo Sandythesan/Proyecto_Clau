@@ -50,6 +50,96 @@ table(fb$Post.Hour.col)
 
 names(fb)
 summary(fb)
+                     
+###############
+#    Los siguientes boxplots son para ver el comportamiento de las variables explicativas y las variables de respuesta
+####
+
+par(mfrow = c(2,3))
+
+boxplot(fb$Lifetime.Post.Total.Reach, # Data
+        horizontal = FALSE, # Horizontal or vertical plot
+        lwd = 2, # Lines width
+        col = rgb(1, 0, 0, alpha = 0.8), # Color
+        ylab = "Número de personas",  # Y-axis label
+        main = "Lifetime Post Total Reach", # Title
+        notch = TRUE, # Add notch if TRUE
+        border = "black",  # Boxplot border color
+        outpch = 25,       # Outliers symbol
+        outbg = "green",   # Outliers color
+        whiskcol = "blue", # Whisker color
+        whisklty = 2,      # Whisker line type
+        lty = 1) # Line type (box and median)
+
+boxplot(log(fb$Lifetime.Post.Total.Reach), # Data
+        horizontal = FALSE, # Horizontal or vertical plot
+        lwd = 2, # Lines width
+        col = rgb(1, 0, 0, alpha = 0.8), # Color
+        ylab = "Número de personas",  # Y-axis label
+        main = "Log - Lifetime Post Total Reach", # Title
+        notch = TRUE, # Add notch if TRUE
+        border = "black",  # Boxplot border color
+        outpch = 25,       # Outliers symbol
+        outbg = "green",   # Outliers color
+        whiskcol = "blue", # Whisker color
+        whisklty = 2,      # Whisker line type
+        lty = 1) # Line type (box and median)
+
+boxplot(fb$Page.total.likes, # Data
+        horizontal = FALSE, # Horizontal or vertical plot
+        lwd = 2, # Lines width
+        col = rgb(1, 0, 0, alpha = 0.4), # Color
+        ylab = "Número de Likes",  # Y-axis label
+        main = "Page Total Likes", # Title
+        notch = TRUE, # Add notch if TRUE
+        border = "black",  # Boxplot border color
+        outpch = 25,       # Outliers symbol
+        outbg = "green",   # Outliers color
+        whiskcol = "blue", # Whisker color
+        whisklty = 2,      # Whisker line type
+        lty = 1) # Line type (box and median)
+
+boxplot(fb$Post.Hour, # Data
+        horizontal = FALSE, # Horizontal or vertical plot
+        lwd = 2, # Lines width
+        col = rgb(1, 0, 0, alpha = 0.4), # Color
+        ylab = "Post Hour",  # Y-axis label
+        main = "Horas del día", # Title
+        notch = TRUE, # Add notch if TRUE
+        border = "black",  # Boxplot border color
+        outpch = 25,       # Outliers symbol
+        outbg = "green",   # Outliers color
+        whiskcol = "blue", # Whisker color
+        whisklty = 2,      # Whisker line type
+        lty = 1) # Line type (box and median)
+
+boxplot(fb$Post.Month, # Data
+        horizontal = FALSE, # Horizontal or vertical plot
+        lwd = 2, # Lines width
+        col = rgb(1, 0, 0, alpha = 0.4), # Color
+        ylab = "Meses del año",  # Y-axis label
+        main = "Post Month", # Title
+        notch = TRUE, # Add notch if TRUE
+        border = "black",  # Boxplot border color
+        outpch = 25,       # Outliers symbol
+        outbg = "green",   # Outliers color
+        whiskcol = "blue", # Whisker color
+        whisklty = 2,      # Whisker line type
+        lty = 1) # Line type (box and median)
+
+boxplot(fb$Post.Weekday, # Data
+        horizontal = FALSE, # Horizontal or vertical plot
+        lwd = 2, # Lines width
+        col = rgb(1, 0, 0, alpha = .4), # Color
+        ylab = "Días de la semana",  # Y-axis label
+        main = "Post Weekday", # Title
+        notch = TRUE, # Add notch if TRUE
+        border = "black",  # Boxplot border color
+        outpch = 25,       # Outliers symbol
+        outbg = "green",   # Outliers color
+        whiskcol = "blue", # Whisker color
+        whisklty = 2,      # Whisker line type
+        lty = 1) # Line type (box and median)
 
 ###############
 #    Las siguientes son gráficas para ver las correlaciones entre las var. de respuesta
