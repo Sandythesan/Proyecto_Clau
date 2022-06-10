@@ -135,12 +135,16 @@ ___
 #############
 #    1) Modelo predictivo con su optimización
 ####
-
-fb_pred<-lm(fb$Lifetime.Post.Total.Reach~fb$Post.Hour+fb$Post.Weekday+fb$Post.Month+fb$Type+fb$Category+fb$Paid)
+fb_pred<-lm(Lifetime.Post.Total.Reach~Post.Hour+Post.Weekday+
+              Post.Month+Type+Category+Paid+Page.total.likes, fb)
 step.model_pred<-stepAIC(fb_pred, direction = "both",
                          trace = TRUE)
-summary(step.model_pred)
-plot(step.model_pred)
+summary(fb_pred)
+#summary(step.model_pred)
+
+par(mfrow=c(2,2))
+plot(fb_pred)
+
 
 
 #############
