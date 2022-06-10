@@ -1,6 +1,9 @@
 ############
 #    Importación de los datos
 ####
+
+"blsblsbls#"
+
 library(RCurl)
 library("scatterplot3d")
 library(MASS)
